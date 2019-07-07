@@ -1,0 +1,77 @@
+$def with (list, mae, recall)
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List</title>
+    <style>
+        table{
+            width: 35%;
+            table-layout: fixed;
+        }
+        td{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+</head>
+<body>
+
+<br>
+
+<ul>
+    <table width="35%">
+        <tr>
+            <td width="20%">&nbsp;&nbsp;&nbsp;</td>
+            <td width="20%"><strong>Jaccard</strong></td>
+            <td width="20%"><strong>Pearson</strong></td>
+            <td width="20%"><strong>Adj Cosine</strong></td>
+            <td width="20%"><strong>Pear&Jacc</strong></td>
+        </tr>
+        <tr>
+            <td width="20%">&nbsp;Recall</td>
+            <td width="20%">&nbsp;&nbsp;$recall[0]</td>
+            <td width="20%">&nbsp;&nbsp;$recall[1]</td>
+            <td width="20%">&nbsp;&nbsp;$recall[2]</td>
+            <td width="20%">&nbsp;&nbsp;$recall[3]</td>
+        </tr>
+        <tr>
+            <td width="20%">&nbsp;&nbsp;&nbsp;MAE</td>
+            <td width="20%">&nbsp;&nbsp;$mae[0]</td>
+            <td width="20%">&nbsp;&nbsp;$mae[1]</td>
+            <td width="20%">&nbsp;&nbsp;$mae[2]</td>
+            <td width="20%">&nbsp;&nbsp;$mae[3]</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+
+    $for key in list.keys():
+        $if key == 0:
+            <strong>&nbsp;&nbsp;&nbsp;Jaccard's MAE: $mae[key], Recall: $recall[key]</strong>
+        $elif key == 1:
+            <strong>&nbsp;&nbsp;&nbsp;Pearson's MAE: $mae[key], Recall: $recall[key]</strong>
+        $elif key == 2:
+            <strong>&nbsp;&nbsp;&nbsp;Adjusted Cosine's MAE: $mae[key], Recall: $recall[key]</strong>
+        $elif key == 3:
+            <strong>&nbsp;&nbsp;&nbsp;Pearson & Jaccard's MAE: $mae[key], Recall: $recall[key]</strong>
+        <table>
+        $for item in list[key]:
+            <tr>
+                <td width="10%">&nbsp;&nbsp;&nbsp;$item[0]</td>
+                <td width="68%">$item[1]</td>
+                <td width="10%">&nbsp;&nbsp;&nbsp;$item[2]</td>
+                <td width="12%">&nbsp;$item[3]</td>
+            </tr>
+        </table>
+        <br>
+</ul>
+
+<br>
+<br>
+<br>
+<!--  border=1px cellspacing="0" cellpadding="0" bgcolor="white" bordercolor="silver" -->
+</body>
+</html>
